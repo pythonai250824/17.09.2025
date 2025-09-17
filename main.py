@@ -1,59 +1,47 @@
-from fastapi import FastAPI, HTTPException
 
+from fastapi import FastAPI
+import uvicorn
+
+# Create the app
 app = FastAPI()
+# Starlette
+# Flask
+# Django
 
-# Simple in-memory "database"
-messages = [
-    {"id": 1, "text": "First message"},
-    {"id": 2, "text": "Second message"}
-]
+# http://127.0.0.1:8000
+# 8000 PORT
 
-# GET all
+# REST API
+# GET    -- read from
+# POST   -- insert into db (create)
+# PUT    -- create/update {like dict in python a['age'] = 18}
+# PATCH  -- update {if not exist, error}
+# DELETE -- delete
+
+# Root endpoint
 @app.get("/messages")
-def get_messages():
-    return messages
+def read_root():
+    return {"message": "Hello, GET"}
 
-# GET by id
 @app.get("/messages/{id}")
-def get_message(id: int):
-    for msg in messages:
-        if msg["id"] == id:
-            return msg
-    raise HTTPException(status_code=404, detail="Message not found")
+def read_root(id: int):
+    return {"message": "Hello,GET by ID!~!!!!!!!!!!!!!"}
 
-# POST (create new)
 @app.post("/messages")
-def create_message(text: str):
-    new_id = max([m["id"] for m in messages], default=0) + 1
-    new_msg = {"id": new_id, "text": text}
-    messages.append(new_msg)
-    return new_msg
+def read_root():
+    return {"message": "Hello, POST"}
 
-# PUT (replace or create)
 @app.put("/messages/{id}")
-def put_message(id: int, text: str):
-    for msg in messages:
-        if msg["id"] == id:
-            msg["text"] = text
-            return msg
-    # if not found, create
-    new_msg = {"id": id, "text": text}
-    messages.append(new_msg)
-    return new_msg
+def read_root(id: int):
+    return {"message": "Hello, PUT"}
 
-# PATCH (update only if exists)
 @app.patch("/messages/{id}")
-def patch_message(id: int, text: str):
-    for msg in messages:
-        if msg["id"] == id:
-            msg["text"] = text
-            return msg
-    raise HTTPException(status_code=404, detail="Message not found")
+def say_hello(id: int):
+    return {"message": f"Hello, PATCH"}
 
-# DELETE
 @app.delete("/messages/{id}")
-def delete_message(id: int):
-    for i, msg in enumerate(messages):
-        if msg["id"] == id:
-            return messages.pop(i)
-    raise HTTPException(status_code=404, detail="Message not found")
+def say_hello(id: int):
+    return {"message": f"Hello, DELETE!"}
+
+# if __name__ == "__main__":
+#     uvicorn.run("main:app", host="127.0.0.1", port=9001, reload=True)
