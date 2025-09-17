@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Query
 from sklearn.linear_model import LinearRegression
 import numpy as np
+from starlette.responses import HTMLResponse
 
 app = FastAPI(title="Linear Regression via GET /messages")
 
@@ -16,12 +17,27 @@ coef = float(model.coef_[0])  # a
 intercept = float(model.intercept_)  # b
 
 @app.get("/linear/predict")
-def get_prediction(x: float):
+def get_prediction(x: float = 0):
     result = float(model.predict(np.array([[x]], dtype=float))[0])
     return {
         "x": x,
         "y_pred": result
     }
+
+@app.get("/", response_class=HTMLResponse)
+def home():
+    return """
+    <html>
+        <head>
+            <title>My Home Page</title>
+        </head>
+        <body>
+            <h1>Welcome to my FastAPI Home Page 🚀</h1>
+            <p>This is served with FastAPI</p>
+            <a href="./linear/predict">predict url </a>
+        </body>
+    </html>
+    """
 
 # to run:
 # in the Terminal:

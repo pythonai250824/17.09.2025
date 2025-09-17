@@ -29,6 +29,8 @@ def create_message(text: str):
     messages.append(new_msg)
     return new_msg
 
+# https://www.google.com/search?q=fun+city
+
 # PUT (replace or create)
 @app.put("/messages/{id}")
 def put_message(id: int, text: str):
