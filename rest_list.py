@@ -57,3 +57,7 @@ def delete_message(id: int):
         if msg["id"] == id:
             return messages.pop(i)
     raise HTTPException(status_code=404, detail="Message not found")
+
+# to run:
+# in the Terminal:
+# uvicorn rest_list:app --port 9001 --reload

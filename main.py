@@ -45,3 +45,7 @@ def say_hello(id: int):
 
 # if __name__ == "__main__":
 #     uvicorn.run("main:app", host="127.0.0.1", port=9001, reload=True)
+
+# to run:
+# in the Terminal:
+# uvicorn main:app --port 9001 --reload

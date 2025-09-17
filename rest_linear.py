@@ -22,3 +22,7 @@ def get_prediction(x: float):
         "x": x,
         "y_pred": result
     }
+
+# to run:
+# in the Terminal:
+# uvicorn rest_linear:app --port 9001 --reload
