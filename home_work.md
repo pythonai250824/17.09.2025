@@ -113,3 +113,6 @@ def predict_probability(x: float) -> float:
   "probability": 0.73
 }
 ```
+
+### submit solution 
+to: pythonai250824+hwrest1@gmail.com
