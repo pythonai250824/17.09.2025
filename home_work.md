@@ -2,8 +2,8 @@
 
 ## Part 1 – REST API with SQLite
 
-You are given the code in [rest\_list.py](https://github.com/pythonai250824/17.09.2025/blob/master/rest_list.py).
-Currently, the logic uses an in-memory Python list. Your task is to **replace it with SQLite queries**.
+You are given the code in [rest\_list.py](https://github.com/pythonai250824/17.09.2025/blob/master/rest_list.py)
+Currently, the logic uses an in-memory Python list. Your task is to **replace it with SQLite queries**
 
 ### Requirements
 
@@ -38,7 +38,7 @@ Currently, the logic uses an in-memory Python list. Your task is to **replace it
   INSERT INTO messages (id, text) VALUES (?, ?);
   ```
 * **PATCH /messages/{id}**
-  Update the text only if the row already exists. If not found → return 404.
+  Update the text only if the row already exists. If not found → return 404
 
   ```sql
   UPDATE messages SET text = ? WHERE id = ?;
@@ -65,8 +65,8 @@ CREATE TABLE IF NOT EXISTS messages (
 
 ## Part 2 – Logistic Regression API
 
-You are given the code in [rest\_linear.py](https://github.com/pythonai250824/17.09.2025/blob/master/rest_linear.py).
-Instead of **linear regression**, implement **logistic regression**.
+You are given the code in [rest\_linear.py](https://github.com/pythonai250824/17.09.2025/blob/master/rest_linear.py)
+Instead of **linear regression**, implement **logistic regression**
 
 ### Example Training Code
 
@@ -93,7 +93,7 @@ print(f"P(return) = 1 / (1 + e^-({b0:.2f} + {b1:.2f} * income))")
 ### Task
 
 * Implement an endpoint **GET /logistic/predict?x=VALUE**
-* When a user sends a request with `x`, return the predicted probability using the trained logistic regression model.
+* When a user sends a request with `x`, return the predicted probability using the trained logistic regression model
 
 ### Function Example
 
